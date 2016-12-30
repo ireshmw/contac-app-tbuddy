@@ -1,18 +1,14 @@
-/**
- * Created by iresh on 12/28/2016.
- */
-
 
 $(document).ready(function () {
 
     var dialog = $("#dialog");
     dialog.dialog({
-        autoOpen: false,
+        autoOpen: false
     });
 
 
     $("#table-body").on('click', '.edit-record', function () {
-        //event.preventDefault();
+        event.preventDefault();
         //--------------------------------------------------------on clicking edit icon -> open the dialog window
         dialog.dialog('open');
         dialog.dialog({
@@ -43,7 +39,7 @@ $(document).ready(function () {
         $(function () {
             var token = $("input[name='_csrf']").val();
             var header = "X-CSRF-TOKEN";
-            $(document).ajaxSend(function (e, xhr, options) {
+            $(document).ajaxSend(function (e, xhr) {
                 xhr.setRequestHeader(header, token);
             });
         });
@@ -61,7 +57,7 @@ $(document).ready(function () {
             data: JSON.stringify({"id": recordId}),
             dataType: 'json',
             contentType: 'application/json',
-            success: function (data, textStats, jqXHR) {
+            success: function (data, jqXHR) {
                 console.log(data);
                 $("#first_name").val(data['contact']['fName']);
                 $("#last_name").val(data['contact']['lName']);
