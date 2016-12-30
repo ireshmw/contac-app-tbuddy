@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:display="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>-->
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>-->
+    <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+    <!--<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet"/>-->
+    <script src="../../static/js/full-info-view.js"  ></script>
+
+</head>
+<body>
+
+
+        <div class="table-responsive" th:fragment="table">
+            <div class="panel panel-default" id="table-panel">
+                <div class="panel-heading">
+                    <h4>
+                        Your Contact List
+                    </h4>
+                </div>
+                <table class="table table-fixed table-hover  ">
+                    <thead>
+                    <tr>
+                        <th class="col-xs-2">#</th>
+                        <th class="col-xs-3">Name</th>
+                        <th class="col-xs-3">Phone</th>
+                        <th class="col-xs-4">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody id="table-body">
+                    <tr th:each="contact:${contactList}">
+                        <td class="col-xs-1 rec-id" th:text="${contact.id}"></td>
+                        <td class="col-xs-4" th:text="${contact.fName}+' '+ ${contact.lName}"></td>
+                        <td class="col-xs-3" th:text="${contact.phoneNumbers[0].phoneNumber}"></td>
+                        <td class="col-xs-4"  >
+                            <!--<button name="delete-record" class="delete-record">Delete</button>-->
+                            <button type="button" class="btn btn-default btn-sm full-info">
+                                <span class="glyphicon glyphicon-briefcase"></span>
+                            </button>
+                            <button type="button" class="btn btn-default btn-sm edit-record">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                            </button>
+
+                            <button type="button" class="btn btn-default btn-sm delete-record" name="delete-record" >
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </button>
+
+                        </td>
+                    </tr>
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+</body>
+</html>

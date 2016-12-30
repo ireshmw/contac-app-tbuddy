@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<!--<div class="container " >-->
+    <!--<div class="row">-->
+        <!--<div class="col-sm-4 col-md-offset-3 " >-->
+            <!--<h2>Contact form</h2>-->
+                <!--<form action="#" th:action = "@{/}" method="post" th:object="${contact}">-->
+                    <!--<div class="form-group">-->
+                        <!--<label for="name">Name:</label>-->
+                        <!--<input type="text" class="form-control" id="name" th:field="*{name}" placeholder="Enter name"/>-->
+                    <!--</div>-->
+                    <!--<div class="form-group">-->
+                        <!--<label for="phone">Phone:</label>-->
+                        <!--<input type="text" class="form-control" id="phone" th:field="*{phoneNumb}" placeholder="Enter phone number"/>-->
+                    <!--</div>-->
+                    <!--<button type="submit" class="btn btn-default">Add To Contact</button>-->
+                <!--</form>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+
+<body>
+<div class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="text-center">
+                    <b>Contact Buddy</b>
+                </h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="section">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <form role="form" action="#" th:action = "@{/}" method="post" th:object="${contact}">
+                                    <div class="form-group col-xs-8">
+                                        <label class="control-label" for="exampleInputEmail1">Name</label>
+                                        <input class="form-control" id="exampleInputEmail1" placeholder="Name"
+                                               type="text" th:field="*{name}"/>
+                                    </div>
+                                    <div class="form-group col-xs-8">
+                                        <label class="control-label" for="exampleInputPassword1">Phone Number</label>
+                                        <input class="form-control" id="exampleInputPassword1"
+                                               placeholder="Password" type="text" th:field="*{phoneNumb}"/>
+                                    </div>
+                                    <div class="form-group col-xs-8">
+                                        <button type="submit" class="btn btn-default">Submit</button>
+                                    </div>
+                                </form>
+
+
+                            </div>
+                            <div class="col-md-6">
+                                <table class="table table-hover table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Name</th>
+                                        <th>Phone Number</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr th:each="contact:${contacts}">
+                                            <th scope="row">1</th>
+                                            <td th:text="${contact.name}"></td>
+                                            <td th:text="${contact.phoneNumb}"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
+
+
+<!--<html>-->
+
+<!--<head>-->
+    <!--<meta charset="utf-8">-->
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+    <!--<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>-->
+    <!--<script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>-->
+    <!--<link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css"-->
+          <!--rel="stylesheet" type="text/css">-->
+    <!--<link rel="stylesheet" href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css">-->
+<!--</head>-->
+
+
+
+<!--</html>-->

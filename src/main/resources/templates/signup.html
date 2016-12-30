@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>SignUp</title>
+
+    <link rel="stylesheet" href="../static/css/signup-style.css" th:href="@{/css/signup-style.css}">
+</head>
+<body>
+<div class="signup">
+    <div class="signup-screen">
+        <div class="app-title">
+            <h1>Sign UP</h1>
+        </div>
+
+        <div id="success-text" th:id="success-text">
+            <label th:text="*{success}" >SignUp Successful!</label>
+        </div>
+
+
+        <form action="#" th:action="@{/signup}" method="post" th:object="${signUpModel}">
+
+
+            <div class="signup-form">
+                <label th:text="${name}" ></label>
+                <!--<div   th:if="${flash != null}"class="flash">-->
+                <!--<label th:text="${flash.message}" >error...</label>-->
+                <!--</div>-->
+
+                <!--<div th:if="${param.error}" style= "padding-bottom: 5px;">-->
+                    <!--<label class="text-warning" style="color: red; padding-bottom: 5px;">Invalid username or/and password.</label>-->
+                <!--</div>-->
+
+
+                <div class="control-group">
+                    <input type="text" class="signup-field" th:field="*{userName}"  placeholder="User Name" id="login-name" name="username">
+                    <label class="error-label" th:class="${#fields.hasErrors('userName')}? error-label" for="login-name" th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}"></label>
+                </div>
+
+                <div class="control-group">
+                    <input type="text" class="signup-field" th:field="*{email}" placeholder="Email" id="email" name="email">
+                    <label class="error-label" for="email" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></label>
+                </div>
+
+                <div class="control-group">
+                    <input type="password" class="signup-field" th:field="*{password}" placeholder="password" id="signup-pass" name="Password">
+                    <label class="error-label" for="signup-pass" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></label>
+                </div>
+
+                <div class="control-group">
+                    <input type="password" class="signup-field" th:field="*{confirmPassword}" placeholder="Confirm Password" id="confirm-pass" name="confirmPassword">
+                    <label class="error-label" for="confirm-pass" th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}"></label>
+                </div>
+
+                <input type="submit" value="Submit" class="btn btn-primary btn-large btn-block"/>
+                <a class="signup-link" href="/login">Login</a>
+                <a class="signup-link" href="#">Lost your password?</a>
+
+            </div>
+        </form>
+
+    </div>
+</div>
+</body>
+</html>

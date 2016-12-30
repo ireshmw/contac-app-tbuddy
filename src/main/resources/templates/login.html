@@ -1,0 +1,79 @@
+<!--<!DOCTYPE html>-->
+<!--<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"-->
+      <!--xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">-->
+<!--<head>-->
+    <!--<title>Spring Security Example </title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div th:if="${param.error}">-->
+    <!--Invalid username and password.-->
+<!--</div>-->
+<!--<div th:if="${param.logout}">-->
+    <!--You have been logged out.-->
+<!--</div>-->
+<!--<form th:action="@{/login}" method="post">-->
+
+    <!--<div><label> User Name : <input type="text" name="username"/> </label></div>-->
+    <!--<div><label> Password: <input type="password" name="password"/> </label></div>-->
+    <!--<div><input type="submit" value="Sign In"/></div>-->
+<!--</form>-->
+<!--</body>-->
+<!--</html>-->
+
+<!DOCTYPE html>
+<html mlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Form</title>
+
+
+    <!--<link rel="stylesheet" href="css/login-style.css">-->
+    <link rel="stylesheet" href="../static/css/login-style.css" th:href="@{/css/login-style.css}">
+
+
+
+</head>
+
+<body>
+<body>
+<div class="login">
+    <div class="login-screen">
+        <div class="app-title">
+            <h1>Login</h1>
+        </div>
+
+        <form th:action="@{/login}" method="post">
+
+
+            <div class="login-form">
+
+                <!--<div   th:if="${flash != null}"class="flash">-->
+                    <!--<label th:text="${flash.message}" >error...</label>-->
+                <!--</div>-->
+
+                <div th:if="${param.error}" style= "padding-bottom: 5px;">
+                    <label class="text-warning" style="color: red; padding-bottom: 5px;">Invalid username or/and password.</label>
+                </div>
+
+
+                <div class="control-group">
+                    <input type="text" class="login-field" value="" placeholder="username" id="login-name" name="username">
+                    <label class="login-field-icon fui-user" for="login-name"></label>
+                </div>
+
+                <div class="control-group">
+                    <input type="password" class="login-field" value="" placeholder="password" id="login-pass" name="password">
+                    <label class="login-field-icon fui-lock" for="login-pass"></label>
+                </div>
+                <input type="submit" class="btn btn-primary btn-large btn-block">
+                <a class="login-link" href="/signup">SignUp</a>
+                <a class="login-link" href="#">Lost your password?</a>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+
+
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:display="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet"/>
+
+    <!--<meta name="_csrf" content="${_csrf.token}"/>-->
+    <!--<meta name="_csrf_header" content="${_csrf.headerName}"/>-->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Bungee" rel="stylesheet"/>
+
+    <script src="../../static/js/contactJs.js"></script>
+
+</head>
+<body>
+<div th:fragment="adding_contacts" style="font-family:Ubuntu;">
+    <style>
+        .custom-red {
+            background: #286090;
+            color: white;
+            font-family: Ubuntu;
+            text-align: center;
+        }
+
+        .component-custom {
+            /*//text-align: center;*/
+            align-content: center;
+        }
+    </style>
+
+
+    <form class="well form-horizontal" action="/form" method="post" id="contact-form">
+        <!--<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>-->
+        <!-- Form Name -->
+        <sec:csrfInput/>
+        <!-- Text input-->
+        <div class="form-group form-group-sm">
+            <label class="col-md-4 control-label">First Name</label>
+            <div class="col-md-4 inputGroupContainer">
+                <div class="input-group ">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    <input id="first_name" name="first_name" placeholder="First Name" class="form-control" type="text">
+                </div>
+                <label class="text-warning" id="fName-error"></label>
+            </div>
+        </div>
+        <!-- Text input-->
+        <div class="form-group form-group-sm">
+            <label class="col-md-4 control-label">Last Name</label>
+            <div class="col-md-4 inputGroupContainer">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    <input id="last_name" name="last_name" placeholder="Last Name" class="form-control" type="text">
+                </div>
+                <label class="text-warning" id="lName-error"></label>
+            </div>
+        </div>
+        <!-- Text input-->
+        <div class="form-group form-group-sm " id="phone-numb">
+            <label class="col-md-4 control-label">Phone #</label>
+            <div class="col-md-4 inputGroupContainer" id="phone-numbers">
+                <div class="input-group phone-group" id="phone-1">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+                    <input name="phone" placeholder="(845)555-1212" class="form-control" type="text">
+                    <span class="input-group-btn">
+                                <button type="button" class="btn btn-default btn-sm" id="extra-phn-numb">
+                                    <span class="glyphicon glyphicon-plus"></span>
+                                </button>
+                            </span>
+                </div>
+                <label class="text-warning" id="phoneNumbers-error"></label>
+            </div>
+        </div>
+        <!-- Text input-->
+        <div class="form-group form-group-sm" id="email">
+            <label class="col-md-4 control-label">E-Mail</label>
+            <div class="col-md-4 inputGroupContainer" id="emails">
+                <div class="input-group mail-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                    <input name="email" placeholder="E-Mail Address" class="form-control" type="text">
+                    <span class="input-group-btn">
+                            <button type="button" class="btn btn-default btn-sm" id="extra-email">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </button>
+                        </span>
+                </div>
+                <label class="text-warning" id="mails-error"></label>
+            </div>
+        </div>
+        <!-- Text input-->
+        <div class="form-group form-group-sm">
+            <label class="col-md-4 control-label">Address</label>
+            <div class="col-md-4 inputGroupContainer">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                    <input id="address" name="address" placeholder="Address" class="form-control" type="text">
+                </div>
+            </div>
+        </div>
+        <!-- Text area -->
+        <div class="form-group form-group-sm">
+            <label class="col-md-4 control-label">Note</label>
+            <div class="col-md-4 inputGroupContainer">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                    <textarea id="comment" class="form-control" name="comment" placeholder="Note"></textarea>
+                </div>
+            </div>
+        </div>
+        <!--&lt;!&ndash; Success message &ndash;&gt;-->
+        <!--<div class="alert alert-success" role="alert" id="success_message">Success <i class="glyphicon glyphicon-thumbs-up"></i> Thanks for contacting us, we will get back to you shortly.</div>-->
+        <!-- Button -->
+        <div class="form-group form-group-sm">
+            <label class="col-md-4 control-label"></label>
+            <div class="col-md-4">
+                <button type="submit" class="btn btn-warning" id="form-submit">Send <span
+                        class="glyphicon glyphicon-send"></span></button>
+                <label class="text-warning" id="success-text"></label>
+            </div>
+
+        </div>
+
+    </form>
+</div>
+<!--</div>&lt;!&ndash; /.container &ndash;&gt;-->
+</div>
+</body>
+</html>
