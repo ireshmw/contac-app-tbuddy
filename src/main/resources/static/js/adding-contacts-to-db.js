@@ -72,17 +72,28 @@ $(document).ready(function (event) {
 
                     $("#success-text").html("Contact has successfully added.");
                     var contactObject = data["contact"];
-                    var conId = contactObject["id"];;;;;;;;;;;;;;;;;;;;
+                    var conId = contactObject["id"];
                     var conName = contactObject["fName"];
+                    var conLName = contactObject["lName"];
                     var conPhone = contactObject["phoneNumbers"][0]["phoneNumber"];
 
                     console.log(conId);
                     console.log(conName);
                     console.log(conPhone);
+                    var recID = $("#edit-record-id").val();
+                    var removeRowId = "#" + recID;
+                    console.log(recID);
+                    console.log(removeRowId);;;;;;;;;
+                    if (recID != null) {
+
+                        console.log("inside the row remove if.....");;;;;;;;;
+
+                        $(removeRowId).parent().remove();
+                    }
 
                     //$('<tr"> <th scope="row" class="rec-id">' +conId +'</th> <td >' +conName +'</td> <td >' +conPhone +'</td> <td> <button name="delete-record" class="delete-record">Delete</button> </td></tr>').appendTo( "#tbody" );
                     //
-                    $('<tr> <td class="col-xs-2 rec-id">' + conId + '</td> <td class="col-xs-3" >' + conName + '</td> <td class="col-xs-3">' + conPhone + '</td> <td class="col-xs-4"  > <button type="button" class="btn btn-default btn-sm full-info"> <span class="glyphicon glyphicon-briefcase"></span> </button> <button type="button" class="btn btn-default btn-sm"> <span class="glyphicon glyphicon-pencil"></span> </button> <button type="button" class="btn btn-default btn-sm delete-record" name="delete-record" > <span class="glyphicon glyphicon-trash"></span> </button> </td> </tr>').appendTo("#table-body");
+                    $('<tr> <td class="col-xs-1 rec-id" id="' + conId + '">' + conId + '</td> <td class="col-xs-4" >' + conName + ' ' + conLName + '</td> <td class="col-xs-3">' + conPhone + '</td> <td class="col-xs-4"  > <button type="button" class="btn btn-default btn-sm full-info"> <span class="glyphicon glyphicon-briefcase"></span> </button> <button type="button" class="btn btn-default btn-sm"> <span class="glyphicon glyphicon-pencil"></span> </button> <button type="button" class="btn btn-default btn-sm delete-record" name="delete-record" > <span class="glyphicon glyphicon-trash"></span> </button> </td> </tr>').appendTo("#table-body");
 
 
                 }

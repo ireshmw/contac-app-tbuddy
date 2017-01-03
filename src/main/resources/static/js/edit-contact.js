@@ -33,28 +33,6 @@ $(document).ready(function (event) {
         event.preventDefault();
         //--------------------------------------------------------on clicking edit icon -> open the dialog window
         dialog.dialog('open');
-        // dialog.dialog({
-        //close: function() { $(this).dialog('destroy'); },
-        // open:function () {
-        //         // position: { my: "left bottom", at: "right"},
-        // },
-        // title: "Add a New Contact",
-        // //minWidth:'auto',
-        // //  width: 600,
-        // //  autoOpen: true,
-        // //  modal: true,
-        // //  responsive: true,
-        // width: 'auto', // overcomes width:'auto' and maxWidth bug
-        // maxWidth: 'auto',
-        // height: 'auto',
-        // modal: true,
-        // fluid: true, //new option
-        // resizable: true,
-        // classes: {
-        //     "ui-dialog-titlebar": "custom-red",
-        //     "ui-dialog-content": "component-custom"
-        // }
-        //});
         //--------------------- end of the dialog open.
 
         //-------------------------------------------- send a CSRF token with ajax request
@@ -70,6 +48,9 @@ $(document).ready(function (event) {
         //-------------------------------------------------------send a ajax request for get corresponding data of the row.
 
         var recordId = $(this).parent().siblings(".rec-id").html();//getting corresponding row id of the edit icon
+        $("#edit-record").val(true);
+        $("#edit-record-id").val(recordId);
+
         console.log("you click the edit button...");
         console.log(recordId);
 

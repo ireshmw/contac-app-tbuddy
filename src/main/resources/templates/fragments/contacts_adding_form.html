@@ -37,7 +37,13 @@
 
     <form class="well form-horizontal" action="/form" method="post" id="contact-form">
         <!--<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>-->
-        <!-- Form Name -->
+
+        <!--true when editing a existing contact otherwise false -->
+        <input type="hidden" name="edit-record" id="edit-record"/>
+        <!--value set to selected record id when editing a existing contact otherwise null -->
+        <input type="hidden" name="edit-record-id" id="edit-record-id"/>
+
+
         <sec:csrfInput/>
         <!-- Text input-->
         <div class="form-group form-group-sm">

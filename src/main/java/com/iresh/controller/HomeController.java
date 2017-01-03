@@ -2,28 +2,27 @@ package com.iresh.controller;
 
 import com.iresh.model.*;
 import com.iresh.repository.ContactRepository;
-
 import com.iresh.repository.UserRepository;
 import com.iresh.validators.ContactValidator;
-import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
-import org.hibernate.validator.internal.engine.ConstraintViolationImpl;
-import org.springframework.beans.ConfigurablePropertyAccessor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.*;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.validation.BeanPropertyBindingResult;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.jws.soap.SOAPBinding;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
-import javax.validation.Valid;
 import java.security.Principal;
-import java.sql.SQLIntegrityConstraintViolationException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 
 /**
@@ -153,6 +152,12 @@ public class HomeController {
 
         RespondState respondObj = new RespondState();
 
+        String editing = httpServletRequest.getParameter("edit-record");
+        String editingRecordId = httpServletRequest.getParameter("edit-record-id");
+        System.out.println("edition record -----" + editing);
+        System.out.println("editing record id---" + editingRecordId);
+        System.out.println(editing.equals("true"));
+
         String firstName = httpServletRequest.getParameter("first_name");
         String lastName = httpServletRequest.getParameter("last_name");
         //String[] phoneNumbers = parameters.get("phone");
@@ -222,10 +227,17 @@ public class HomeController {
 
             try {
 
-                contacts.save(contact);
+                if (editing.equals("true") && editing != null) {
+                    int id = Integer.parseInt(editingRecordId);
+                    final Long aLong = contacts.deleteById(id);
+                    System.out.println("deleting the record ----" + id);
+
+                }
+                Contact savedContact = contacts.save(contact);
                 System.out.println("Contact has saved....");
                 //System.out.println(savedContact.toString());
 
+                httpReplyContact.setId(savedContact.getId());
                 respondObj.setContact(httpReplyContact);
                 respondObj.setState(1);
                 return respondObj;

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:display="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8"/>
     <title>Title</title>
@@ -32,7 +32,7 @@
                     </thead>
                     <tbody id="table-body">
                     <tr th:each="contact:${contactList}">
-                        <td class="col-xs-1 rec-id" th:text="${contact.id}"></td>
+                        <td class="col-xs-1 rec-id" th:text="${contact.id}" th:id="${contact.id}"></td>
                         <td class="col-xs-4" th:text="${contact.fName}+' '+ ${contact.lName}"></td>
                         <td class="col-xs-3" th:text="${contact.phoneNumbers[0].phoneNumber}"></td>
                         <td class="col-xs-4"  >
