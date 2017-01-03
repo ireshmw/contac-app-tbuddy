@@ -1,42 +1,64 @@
-
-$(document).ready(function () {
+$(document).ready(function (event) {
 
     var dialog = $("#dialog");
     dialog.dialog({
-        autoOpen: false
+        autoOpen: false,
+        close: function () {
+            $("#contact-form input").val(null);
+            $(".text-warning").html(null);
+            $(this).dialog('close');
+
+        },
+        title: "Add a New Contact",
+        //minWidth:'auto',
+        //  width: 600,
+        //  autoOpen: true,
+        //  modal: true,
+        //  responsive: true,
+        width: 'auto', // overcomes width:'auto' and maxWidth bug
+        maxWidth: 'auto',
+        height: 'auto',
+        modal: true,
+        fluid: true, //new option
+        resizable: true,
+        classes: {
+            "ui-dialog-titlebar": "custom-red",
+            "ui-dialog-content": "component-custom"
+        }
+
     });
 
 
-    $("#table-body").on('click', '.edit-record', function () {
+    $("#table-body").on('click', '.edit-record', function (event) {
         event.preventDefault();
         //--------------------------------------------------------on clicking edit icon -> open the dialog window
         dialog.dialog('open');
-        dialog.dialog({
-            title: "Add a New Contact",
-            //minWidth:'auto',
-            //  width: 600,
-            //  autoOpen: true,
-            //  modal: true,
-            //  responsive: true,
-
-            width: 'auto', // overcomes width:'auto' and maxWidth bug
-            maxWidth: 300,
-            height: 'auto',
-            modal: true,
-            fluid: true, //new option
-            resizable: false,
-
-            // position: { my: "left bottom", at: "right"},
-
-            classes: {
-                "ui-dialog-titlebar": "custom-red",
-                "ui-dialog-content": "component-custom"
-            }
-        });
+        // dialog.dialog({
+        //close: function() { $(this).dialog('destroy'); },
+        // open:function () {
+        //         // position: { my: "left bottom", at: "right"},
+        // },
+        // title: "Add a New Contact",
+        // //minWidth:'auto',
+        // //  width: 600,
+        // //  autoOpen: true,
+        // //  modal: true,
+        // //  responsive: true,
+        // width: 'auto', // overcomes width:'auto' and maxWidth bug
+        // maxWidth: 'auto',
+        // height: 'auto',
+        // modal: true,
+        // fluid: true, //new option
+        // resizable: true,
+        // classes: {
+        //     "ui-dialog-titlebar": "custom-red",
+        //     "ui-dialog-content": "component-custom"
+        // }
+        //});
         //--------------------- end of the dialog open.
 
         //-------------------------------------------- send a CSRF token with ajax request
-        $(function () {
+        $(function (event) {
             var token = $("input[name='_csrf']").val();
             var header = "X-CSRF-TOKEN";
             $(document).ajaxSend(function (e, xhr) {

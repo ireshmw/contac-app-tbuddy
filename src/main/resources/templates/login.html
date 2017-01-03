@@ -21,7 +21,7 @@
 <!--</html>-->
 
 <!DOCTYPE html>
-<html mlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" mlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Login Form</title>
@@ -35,7 +35,7 @@
 </head>
 
 <body>
-<body>
+
 <div class="login">
     <div class="login-screen">
         <div class="app-title">
@@ -65,15 +65,12 @@
                     <input type="password" class="login-field" value="" placeholder="password" id="login-pass" name="password">
                     <label class="login-field-icon fui-lock" for="login-pass"></label>
                 </div>
-                <input type="submit" class="btn btn-primary btn-large btn-block">
+                <input type="submit" class="btn btn-primary btn-large btn-block" name="Submit" value="Submit">
                 <a class="login-link" href="/signup">SignUp</a>
                 <a class="login-link" href="#">Lost your password?</a>
             </div>
         </form>
     </div>
 </div>
-</body>
-
-
 </body>
 </html>

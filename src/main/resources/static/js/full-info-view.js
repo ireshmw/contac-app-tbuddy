@@ -1,13 +1,7 @@
-/**
- * Created by iresh on 12/17/2016.
- */
+$(document).ready(function (event) {
 
 
-
-$(document).ready(function () {
-
-
-    $("#table-body .full-info").click(function () {
+    $("#table-body .full-info").click(function (event) {
 
         $("body").append("<div id='overlay'> </div>");
         $("#overlay").append("<div id='data-table'> </div>");
@@ -17,7 +11,7 @@ $(document).ready(function () {
         console.log(recordId);
 
 
-        $(function () {
+        $(function (event) {
             var token = $("input[name='_csrf']").val();
             var header = "X-CSRF-TOKEN";
             $(document).ajaxSend(function (e, xhr, options) {
@@ -26,7 +20,7 @@ $(document).ready(function () {
         });
 
 
-        $("#data-table").on('click', '#info-closing-button', function () {
+        $("#data-table").on('click', '#info-closing-button', function (event) {
 
             $("#overlay").remove();
             console.log("close button clicked..")
@@ -42,7 +36,7 @@ $(document).ready(function () {
             contentType: 'application/json',
             success: function (data, textStats, jqXHR) {
 
-                console.log("inside the success ...")
+                console.log("inside the success ...");;;;;;;;;;;;;;;;;;;;;
                 console.log(data);
 
 

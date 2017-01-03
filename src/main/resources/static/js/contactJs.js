@@ -3,7 +3,7 @@
  */
 
 
-$(document).ready(function () {
+$(document).ready(function (event) {
     console.log("ready!");
 
     // var csrfToken = $('#_csrf').attr("content");
@@ -12,7 +12,7 @@ $(document).ready(function () {
     var token = $("meta[name='_csrf']").attr("content");
     var header = $("meta[name='_csrf_header']").attr("content");
 
-    $("#form-submit").click(function () {
+    $("#form-submit").click(function (event) {
         $("#success_text").empty();
         $("#fName-error").empty();
         $("#lName-error").empty();
@@ -23,7 +23,7 @@ $(document).ready(function () {
         // console.log("header ..."+csrfHeader);
 
 
-        $(function () {
+        $(function (event) {
             var token = $("input[name='_csrf']").val();
             var header = "X-CSRF-TOKEN";
             $(document).ajaxSend(function (e, xhr, options) {
@@ -72,7 +72,7 @@ $(document).ready(function () {
 
                     $("#success-text").html("Contact has successfully added.");
                     var contactObject = data["contact"];
-                    var conId = contactObject["id"]
+                    var conId = contactObject["id"];;;;;;;;;;;;;;;;;;;;
                     var conName = contactObject["fName"];
                     var conPhone = contactObject["phoneNumbers"][0]["phoneNumber"];
 
@@ -100,7 +100,7 @@ $(document).ready(function () {
     var maxPhoneInput = 4;
     var i = 1;
 
-    $("#phone-numb").on('click', '#extra-phn-numb', function () {
+    $("#phone-numb").on('click', '#extra-phn-numb', function (event) {
 
         if (i < maxPhoneInput) {
             i++;
@@ -121,14 +121,16 @@ $(document).ready(function () {
 
     $("#phone-numb").on("click",".remove-extra-phone", function(e){ //user click on remove text
         //console.log("removed clicked..");
-        e.preventDefault(); $(this).parent('div').remove(); i--;
+        e.preventDefault();
+        $(this).parent('div').remove();
+        i--;
 
     });
 
 
     var maxMailInput = 4;
     var j = 1;
-    $("#email").on('click', '#extra-email', function () {
+    $("#email").on('click', '#extra-email', function (event) {
 
         if (j < maxMailInput) {
             j++;
@@ -148,7 +150,9 @@ $(document).ready(function () {
 
     $("#email").on("click",".remove-extra-email", function(e){ //user click on remove text
         //console.log("removed clicked..");
-        e.preventDefault(); $(this).parent('div').remove(); j--;
+        e.preventDefault();
+        $(this).parent('div').remove();
+        j--;
 
     });
 });
