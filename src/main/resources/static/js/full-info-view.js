@@ -1,7 +1,9 @@
 $(document).ready(function (event) {
 
 
-    $("#table-body .full-info").click(function (event) {
+    $("#table-body").on('click', '.full-info', function (event) {
+        //$("#table-body .full-info").click(function (event) {
+        console.log("YOU CLICK THE FULL INFO BUTTON.");;;;
 
         $("body").append("<div id='overlay'> </div>");
         $("#overlay").append("<div id='data-table'> </div>");
@@ -36,7 +38,7 @@ $(document).ready(function (event) {
             contentType: 'application/json',
             success: function (data, textStats, jqXHR) {
 
-                console.log("inside the success ...");;;;;;;;;;;;;;;;;;;;;
+                console.log("inside the success ...");
                 console.log(data);
 
 
@@ -93,7 +95,7 @@ $(document).ready(function (event) {
                 console.log(error);
             }
         });
-        event.preventDefault();
+        //event.preventDefault();
 
 
     });

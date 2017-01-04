@@ -8,8 +8,6 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -43,11 +41,11 @@ public class ContactValidator implements Validator {
 
         List<PhoneNumbers> phoneNumbers = contact.getPhoneNumbers();
         if (phoneNumbers.isEmpty()) {
-            errors.rejectValue("phoneNumbers", "contact.phoneNumbers", "not a valid phone number");
+            errors.rejectValue("phoneNumbers", "contact.phoneNumbers", "Please enter phone number");
         } else {
             for (PhoneNumbers phone : phoneNumbers) {
                 System.out.println(phone.getPhoneNumber());
-                if (!Pattern.matches("\\d{10}", phone.getPhoneNumber())) {
+                if (!Pattern.matches("\\d{10}\\s*", phone.getPhoneNumber())) {
                     errors.rejectValue("phoneNumbers", "contact.phoneNumbers", "not a valid phone number");
                 }
 

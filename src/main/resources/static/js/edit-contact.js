@@ -30,7 +30,7 @@ $(document).ready(function (event) {
 
 
     $("#table-body").on('click', '.edit-record', function (event) {
-        event.preventDefault();
+        //event.preventDefault();
         //--------------------------------------------------------on clicking edit icon -> open the dialog window
         dialog.dialog('open');
         //--------------------- end of the dialog open.
